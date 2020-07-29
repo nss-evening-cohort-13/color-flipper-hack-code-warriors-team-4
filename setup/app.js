@@ -2,12 +2,12 @@ const colorArray = ['red', 'blue', 'yellow', 'green', 'orange', 'purple', 'cream
 
 const bodySelector = document.querySelector('body')
 
-const handleButtonClick = () => {
+const handleButtonClickSimple = () => {
     bodySelector.style.backgroundColor = colorArray[Math.floor(Math.random() * colorArray.length)];
 }
 
 const buttonEvents = () => {
-    document.querySelector('#button').addEventListener('click', handleButtonClick)
+    document.querySelector('#button').addEventListener('click', handleButtonClickSimple)
 }
 
 const init = () => {
