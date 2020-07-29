@@ -1,6 +1,7 @@
 const handleButtonClickHex = () => {
   const randomColor = Math.floor(Math.random() * 16777215).toString(16);
   document.body.style.backgroundColor = `#${randomColor}`;
+  document.querySelector('#logo').style.color = randomColor;
   document.querySelector('#color-name').innerHTML = `#${randomColor}`;
 };
 
@@ -32,6 +33,7 @@ const bodySelector = document.querySelector('body');
 const handleButtonClickSimple = () => {
   const randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
   bodySelector.style.backgroundColor = randomColor;
+  document.querySelector('#logo').style.color = randomColor;
   document.querySelector('#color-name').innerHTML = `${randomColor}`;
 };
 
