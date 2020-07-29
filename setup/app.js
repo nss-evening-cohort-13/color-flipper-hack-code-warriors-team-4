@@ -1,15 +1,46 @@
 'use strict';
 
-const handleButtonClickHex = () => {
-  const randomColor = Math.floor(Math.random() * 16777215).toString(16);
-  document.body.style.backgroundColor = `#${randomColor}`;
-  document.querySelector('#color-name').innerHTML = `#${randomColor}`;
+let active = '';
+
+const simpleOrHex = (e) => {
+  if (e.target.id === 'hex' ){
+    document.querySelector('#hex').style.color = 'white';
+    document.querySelector('#simple').style.color = '#242323';
+    buttonEventHex();
+    active = 'hex';
+    handleButtonClick();
+    return;
+  } else if (e.target.id === 'simple'){
+    active = 'simple';
+    init();
+    return;
+  }
+}
+
+const bodySelector = document.querySelector('body');
+
+const buttonEventHex = () => {
+  document.querySelector('#button').addEventListener('click', handleButtonClick);
 };
 
-const buttonEvent = () => {
-  document
-    .querySelector('#button')
-    .addEventListener('click', handleButtonClickHex);
+const handleButtonClick = () => {
+  if (active === 'hex'){
+    const randomColor = Math.floor(Math.random() * 16777215).toString(16);
+    document.body.style.backgroundColor = `#${randomColor}`;
+    document.querySelector('#color-name').innerHTML = `#${randomColor}`;
+    document.querySelector('#logo').style.color = `#${randomColor}`;
+  } else {
+    const randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+    bodySelector.style.backgroundColor = randomColor;
+    document.querySelector('#color-name').innerHTML = `${randomColor}`;
+    document.querySelector('#logo').style.color = `${randomColor}`;
+  }
+};
+
+const buttonEventSimple = () => {
+  document.querySelector('#button').addEventListener('click', handleButtonClick);
+  document.querySelector('#simple').style.color = 'white';
+  document.querySelector('#hex').style.color = '#242323';
 };
 
 const colorArray = [
@@ -19,34 +50,20 @@ const colorArray = [
   'green',
   'orange',
   'purple',
-  'cream',
+  'white',
   'wheat',
   'hotpink',
   'aquamarine',
   'brown',
-  'cornflowerblue',
+  'violet',
   'darkmagenta',
   'fuchsia',
 ];
 
-const bodySelector = document.querySelector('body');
-
-const handleButtonClickSimple = () => {
-  const randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
-  bodySelector.style.backgroundColor = randomColor;
-  document.querySelector('#color-name').innerHTML = `${randomColor}`;
-};
-
-const buttonEvents = () => {
-  document
-    .querySelector('#button')
-    .addEventListener('click', handleButtonClickSimple);
-};
-
 const init = () => {
-  buttonEvents();
-  buttonEvent();
-  handleButtonClickSimple();
+  buttonEventSimple();
+  handleButtonClick();
+  document.querySelector('#modes').addEventListener('click', simpleOrHex);
 };
 
 init();
