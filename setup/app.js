@@ -32,7 +32,7 @@ const bodySelector = document.querySelector('body');
 const handleButtonClickSimple = () => {
   const randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
   bodySelector.style.backgroundColor = randomColor;
-  document.querySelector('#color-name').innerHTML = `#${randomColor}`;
+  document.querySelector('#color-name').innerHTML = `${randomColor}`;
 };
 
 const buttonEvents = () => {
@@ -44,6 +44,7 @@ const buttonEvents = () => {
 const init = () => {
   buttonEvents();
   buttonEvent();
+  handleButtonClickSimple();
 };
 
 init();
