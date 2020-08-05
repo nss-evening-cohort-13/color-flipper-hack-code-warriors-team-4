@@ -30,12 +30,13 @@
 h1 {
   text-align: center;
   margin-top: 20rem;
-  border: solid 3px black;
+  border: solid 3px white;
   border-radius: 40px;
   font-size: 2.5rem;
   font-weight: 400;
   width: 40%;
   margin-left: 30%;
+  color: white;
 }
 
 .button--container {
@@ -48,8 +49,9 @@ h1 {
   padding: 0.75rem;
   font-size: 1.25rem;
   background: none;
-  border: solid 3px black;
+  border: solid 3px white;
   border-radius: 25px;
+  color: white;
 }
 
 /* Responsiveness */
